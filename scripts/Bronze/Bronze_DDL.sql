@@ -1,5 +1,10 @@
 
 /*
+DDL Script: Create Bronze Tables
+
+Purpose:
+    This script creates the tables in the bronze schema, droping existing tables.
+    Run this script to re-define the DDL structure of the bronze Tables
 
 */
 
