@@ -24,7 +24,7 @@ Usage:
 CREATE OR ALTER PROCEDURE bronze.load_bronze AS
 
 BEGIN
-    DECLARE @start_time DATETIME, @end_time DATETIME, @batch_start_time DATETIME, @batch_end_time DATETIME;
+    DECLARE @start_time DATETIME2, @end_time DATETIME2, @batch_start_time DATETIME2, @batch_end_time DATETIME2;
     BEGIN TRY
         
         PRINT '==========================================='
@@ -45,6 +45,7 @@ BEGIN
         WITH (
             FIRSTROW=2,
             FIELDTERMINATOR= ',',
+            ROWTERMINATOR= '\r\n',
             TABLOCK
         )
         SET @end_time = GETDATE();
@@ -62,6 +63,7 @@ BEGIN
         WITH (
             FIRSTROW=2,
             FIELDTERMINATOR= ',',
+            ROWTERMINATOR= '\r\n',
             TABLOCK
         )
         SET @end_time = GETDATE();
@@ -79,6 +81,7 @@ BEGIN
         WITH (
             FIRSTROW=2,
             FIELDTERMINATOR= ',',
+            ROWTERMINATOR= '\r\n',
             TABLOCK
         )
         SET @end_time = GETDATE();
@@ -100,8 +103,10 @@ BEGIN
         BULK INSERT bronze.erp_CUST_AZ12
         FROM '/datasets/source_erp/CUST_AZ12.csv'
         WITH (
+            FORMAT='CSV',
             FIRSTROW=2,
             FIELDTERMINATOR= ',',
+            ROWTERMINATOR= '\r\n',
             TABLOCK
         )
         SET @end_time = GETDATE();
@@ -118,6 +123,7 @@ BEGIN
         WITH (
             FIRSTROW=2,
             FIELDTERMINATOR= ',',
+            ROWTERMINATOR= '\r\n',
             TABLOCK
         )
         SET @end_time = GETDATE();
@@ -134,6 +140,7 @@ BEGIN
         WITH (
             FIRSTROW=2,
             FIELDTERMINATOR= ',',
+            ROWTERMINATOR= '\r\n',
             TABLOCK
         )
         SET @end_time = GETDATE();
@@ -149,8 +156,8 @@ BEGIN
     BEGIN CATCH
         PRINT '================================'
         PRINT 'ERROR While Loading Bonze Layer'
-        PRINT 'Error ' + CAST(ERROR_NUMBER() as NVARCHAR);
-        PRINT 'Message ' + ERROR_MESSAGE();
+        PRINT 'Error: ' + CAST(ERROR_NUMBER() as NVARCHAR);
+        PRINT 'Message: ' + ERROR_MESSAGE();
         PRINT '================================'
     END CATCH
 END
