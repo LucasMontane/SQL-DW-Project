@@ -75,7 +75,7 @@ BEGIN
             CASE UPPER(TRIM([cst_gndr]))
                 WHEN 'M' THEN 'Male'
                 WHEN 'F' THEN 'Female'
-                ELSE 'Unkown'
+                ELSE 'Unknown'
             END as cst_gndr,
             [cst_create_date]
         from latest_ranked_customers where latest_rank=1;
@@ -111,7 +111,7 @@ BEGIN
             WHEN 'R' THEN 'Road'
             WHEN 'S' THEN 'Other Sales'
             WHEN 'T' THEN 'Touring'
-            ELSE 'Unkown'
+            ELSE 'Unknown'
         END as prd_line,
         CAST([prd_start_dt]AS DATE) as prd_start_dt,
         CAST(LEAD(prd_start_dt,1,NULL) OVER (PARTITION BY prd_key ORDER BY prd_start_dt ASC) -1 AS DATE)  as prd_end_dt
@@ -220,7 +220,7 @@ BEGIN
                 WHEN 'male' then 'Male'
                 WHEN 'female' then 'Female'
                 WHEN 'f' then 'Female'
-                ELSE 'Unkown'
+                ELSE 'Unknown'
             END AS GEN 
 
         FROM bronze.erp_CUST_AZ12
@@ -248,7 +248,7 @@ BEGIN
         select 
             REPLACE(CID,'-','') as CID
 
-            ,CASE WHEN UPPER(TRIM(CNTRY)) IS NULL or CNTRY = '' THEN 'Unkown'
+            ,CASE WHEN UPPER(TRIM(CNTRY)) IS NULL or CNTRY = '' THEN 'Unknown'
                 WHEN UPPER(TRIM(CNTRY)) IN ('USA','US','UNITED STATES') THEN 'United States'
                 WHEN UPPER(TRIM(CNTRY)) IN ('DE','GERMANY') THEN 'Germany'
                 ELSE TRIM(CNTRY)
