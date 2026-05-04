@@ -78,6 +78,7 @@ a prerequisite for accurate KPI calculation.
 ---
 
 ## Repository Structure
+```
 SQL-DW-Project/
 ├── datasets/          # Sample source data (ERP + CRM CSV exports)
 ├── scripts/
@@ -86,7 +87,7 @@ SQL-DW-Project/
 │   └── gold/          # Star-schema DDL and final model population
 ├── tests/             # Data quality validation queries
 └── docs/              # Data catalog, naming conventions, data lineage
-
+```
 ---
 
 ## Tech Stack
