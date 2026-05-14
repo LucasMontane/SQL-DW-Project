@@ -144,7 +144,7 @@ BEGIN
             TABLOCK
         )
         SET @end_time = GETDATE();
-        PRINT '>> Total Load time: ' + CAST(DATEDIFF(second,@start_time,@end_time) AS NVARCHAR)
+        PRINT '>> Total Load time: ' + CAST(DATEDIFF(millisecond,@start_time,@end_time) AS NVARCHAR)
         PRINT '-------------------------------------------'
         -- select * from bronze.erp_PX_CAT_G1V2
         -- select COUNT(*) from bronze.erp_PX_CAT_G1V2
