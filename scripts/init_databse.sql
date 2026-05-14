@@ -19,7 +19,7 @@ CREATE DATABASE DataWarehouse;
 
 --Creating Schemas for the Medallion Structure
 USE DataWarehouse
-
+GO
 CREATE SCHEMA bronze;
 GO
 CREATE SCHEMA silver;
