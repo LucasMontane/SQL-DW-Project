@@ -11,7 +11,7 @@ Parameters:
     This SP does not take any parameters nor it returns any value
 
 Usage: 
-    EXCEC silver.load_silver;
+    EXEC silver.load_silver;
 
 */
 
